@@ -52,7 +52,7 @@ Stop Time 2023-08-06 19:57
 
 ## Attack Maps Before Hardening / Security Controls
 
-```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.<br> I triggered one alert on the RDP side to confirm the queries were still returning results.```
+```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening. I triggered one alert on the RDP side to confirm the queries were still returning results.```
 
 ![2023-08-07 windows-rdp-smb-auth-fail AFTER](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/2c52e2c0-bc30-4c65-acd4-e541d3d03ab2)
 
