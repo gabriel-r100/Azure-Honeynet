@@ -1,5 +1,6 @@
 # Azure-Honeynet
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![image](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/6147c76c-ca87-45e6-9695-cfbced3cec3d)
+
 
 ## Introduction
 
