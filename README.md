@@ -32,39 +32,40 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](![2023-08-05 windows-rdp-smb-auth-fail BEFORE](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/d7be805f-0bad-465d-9422-86111661cef3)
-)<br>
+![2023-08-05 nsg-malicious-allowed-in BEFOREpng](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/cc816686-fc23-4f9a-b5a0-9eb4c40473b4)<br>
+![2023-08-05 syslog-ssh-auth-fail BEFORE](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/3c4d6c00-1679-4b7c-a57b-6125dcbe0ed9)<br>
+![2023-08-05 windows-rdp-smb-auth-fail BEFORE](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/d7be805f-0bad-465d-9422-86111661cef3)<br>
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
+Start Time 2023-08-05 19:57
+Stop Time 2023-08-06 19:57
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+| SecurityEvent            | 95474
+| Syslog                   | 3748
+| SecurityAlert            | 4
+| SecurityIncident         | 206
+| AzureNetworkAnalytics_CL | 2482
 
 ## Attack Maps Before Hardening / Security Controls
 
-```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
+```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.<br> I triggered one alert on the RDP side to confirm the queries were still returning results.```
+
+![2023-08-07 windows-rdp-smb-auth-fail AFTER](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/2c52e2c0-bc30-4c65-acd4-e541d3d03ab2)
 
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2023-08-08 21:09
+Stop Time	2023-08-08 21:09
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
+| SecurityEvent            | 10779
+| Syslog                   | 1
 | SecurityAlert            | 0
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
