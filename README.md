@@ -1,6 +1,6 @@
 # Azure-Honeynet
 
-![Azure-Honeynet-Arrows](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/b7a7f4fb-47ab-4bb5-8a2b-4a5110d4b3a9)
+![Azure-Honeynet-Arrows](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/22dd1645-6488-4fe8-83df-cd9bb6d67d7d)
 
 ## Introduction
 
