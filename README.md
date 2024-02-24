@@ -14,6 +14,27 @@ Logs collected from:
 - Azure Entra ID with `SecurityAlert`
 - Malicious Flow Logs with `AzureNetworkAnalytics_CL`
 
+## Setting up Virtual Machines
+
+We start by provisioning two virtual machines, disabling the NSG and Windows Firewall to take metrics of a fully open computer.
+
+![0-1-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/f3b26733-1d35-479f-9ee8-e8d662b8cc08)
+
+We then install an MS SQL server on our Windows machine to entice hackers and bad actors, they can reach this with the public IP of the Windows machine and port 1433.
+
+![0-2-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/d4d5055e-1cb2-4265-8f3e-10ca8af46314)
+
+## Configuring Logs for Virtual Machines
+
+We ensure that both Syslog (Linux) and Event Viewer (Windows) are reporting authentication logs.<br>
+After ensuring this, we create a Log Analytic Workspace to forward our logs, we install a log forwarding agent on both computers to forward to our Log Analytic Workspace.<br>
+We also create an Azure Key Vault and Storage Account and set up Diagnostic Settings for these services to forward to Log Analytic Workspaces.
+
+![0-4-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/faa6935c-145d-48d6-bd3f-a855dd147c3e)
+
+
+
+
 ## Architecture Before Hardening / Security Controls
 
 ![0-4-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/996b0305-2ae9-4186-8811-ac6069061683)
@@ -38,6 +59,7 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
+
 ![2023-08-05 nsg-malicious-allowed-in BEFOREpng](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/cc816686-fc23-4f9a-b5a0-9eb4c40473b4)<br>
 ![2023-08-05 syslog-ssh-auth-fail BEFORE](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/3c4d6c00-1679-4b7c-a57b-6125dcbe0ed9)<br>
 ![2023-08-05 windows-rdp-smb-auth-fail BEFORE](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/d7be805f-0bad-465d-9422-86111661cef3)<br>
@@ -61,6 +83,10 @@ Stop Time 2023-08-06 19:57
 ```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening. I triggered one alert on the RDP side to confirm the queries were still returning results.```
 
 ![2023-08-07 windows-rdp-smb-auth-fail AFTER](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/2c52e2c0-bc30-4c65-acd4-e541d3d03ab2)
+
+## Hardening Our Environment
+
+We focus on the recommendations of NIST 800-53 with special focus on SC7 Boundary Controls.
 
 ## Metrics After Hardening / Security Controls
 
