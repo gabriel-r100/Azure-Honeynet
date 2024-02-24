@@ -1,28 +1,33 @@
 # Azure-Honeynet
 
-![Azure-Honeynet-Arrows](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/22dd1645-6488-4fe8-83df-cd9bb6d67d7d)
+![0-5-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/d40ec92d-4f17-4f82-aa9c-46edc98753b3)
+
 
 ## Introduction
 
-In this project, I built a mini honeynet in Azure and ingested log sources from various resources (Azure, Linux, Windows) into a Log Analytics workspace, which are then used by Microsoft Sentinel to build attack maps (based on Geo-IP locations), trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, applied some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+In this project, I deploy a honeynet with public facing resources on Azure open to attacks from the internet. Using logging agents and log forwarding tools built into Azure, I create a central repository for our logs to query with KQL and using attackers' IP addresses (using their GeoIP) and plot them on a map. In addition, I create alerts on Azure Sentinel to spin up incidents that I can tackle to harden my environment. I measured security events for 24 hour prior to hardening my resources and then once again after to compare the effectiveness of implementing recommendations from NIST 800-53.
 
-- SecurityEvent (Windows Event Logs)
-- Syslog (Linux Event Logs)
-- SecurityAlert (Log Analytics Alerts Triggered)
-- SecurityIncident (Incidents created by Sentinel)
-- AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
+Logs collected from:
+
+- Windows Event Viewer with `SecurityEvent`
+- Linux syslog with `Syslog`
+- Azure Entra ID with `SecurityAlert`
+- Malicious Flow Logs with `AzureNetworkAnalytics_CL`
 
 ## Architecture Before Hardening / Security Controls
-![Unhardened-Environment](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/68cb51af-8e63-4883-88aa-10d6e04176be)
+
+![0-4-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/996b0305-2ae9-4186-8811-ac6069061683)
 
 ## Architecture After Hardening / Security Controls
-![Hardened-Environment](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/46cec99b-45df-400c-b410-6539cb09b76e)
+
+![0-5-Azure-HoneyNet drawio](https://github.com/gabriel-r100/Azure-Honeynet/assets/55646808/e5385c71-a409-4f9c-a7c7-f6515b3baf22)
+
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
 - Virtual Network (VNet)
 - Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
+- Virtual Machines (1 windows, 1 linux)
 - Log Analytics Workspace
 - Azure Key Vault
 - Azure Storage Account
